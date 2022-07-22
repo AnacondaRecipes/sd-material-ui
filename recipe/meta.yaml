@@ -28,8 +28,8 @@ requirements:
 test:
   imports:
     - sd_material_ui
-  commands:
-    - pip check
+  #commands:
+  #  - pip check
   requires:
     - pip
 
