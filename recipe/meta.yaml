@@ -1,0 +1,44 @@
+{% set name = "sd-material-ui" %}
+{% set version = "4.6.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sd_material_ui-{{ version }}.tar.gz
+  sha256: f1063dbeb9e1689c75c10c073efe52cde37949c9fc85c12f5584d00129158bc6
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  number: 0
+
+requirements:
+  build:
+    - dash
+    - pyyaml
+  host:
+    - python
+    - pip
+  run:
+    - python
+    - dash
+
+test:
+  imports:
+    - sd_material_ui
+  #commands:
+  #  - pip check
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/sd-material-ui/
+  summary: material-ui components for Dash
+  license: MIT
+  license_file: LICENSE.txt
+
+extra:
+  recipe-maintainers:
+    - bkreider
